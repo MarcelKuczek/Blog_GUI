@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="blog.controller.MenuController">
+
+    <Label fx:id="label" styleClass="label" text="What do you want to do?" layoutX="20.0" layoutY="20.0" />
+
+    <Button fx:id="addPostButton" styleClass="button" text="Add Post" onAction="#addPost" layoutX="20.0" layoutY="70.0" />
+    <Label styleClass="hint" text="Add a new post" layoutX="150.0" layoutY="70.0" />
+    
+    <Button fx:id="deletePostButton" styleClass="button" text="Delete Post" onAction="#deletePost" layoutX="20.0" layoutY="120.0" />
+    <Label styleClass="hint" text="Remove a selected post" layoutX="150.0" layoutY="120.0" />
+    
+    <Button fx:id="modifyPostButton" styleClass="button" text="Modify Post" onAction="#modifyPost" layoutX="20.0" layoutY="170.0" />
+    <Label styleClass="hint" text="Edit a selected post" layoutX="150.0" layoutY="170.0" />
+    
+    <Button fx:id="exitAppButton" styleClass="button" text="Exit" onAction="#exitApp" layoutX="20.0" layoutY="220.0" />
+    <Label styleClass="hint" text="Close the application" layoutX="150.0" layoutY="220.0" />
+
+    <Label text="Existing Posts:" styleClass="label-title" layoutX="400.0" layoutY="20.0" />
+
+    <TableView fx:id="postsTableView" layoutX="400.0" layoutY="60.0" prefWidth="600.0" prefHeight="300.0">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0" />
+            <TableColumn fx:id="authorColumn" text="Author" prefWidth="150.0" />
+            <TableColumn fx:id="contentColumn" text="Content" prefWidth="250.0" />
+        </columns>
+    </TableView>
+</AnchorPane>

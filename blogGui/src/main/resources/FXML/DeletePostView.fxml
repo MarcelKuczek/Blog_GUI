@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="blog.controller.DeletePostController">
+    <children>
+        <Label text="Delete Post" layoutX="20" layoutY="20" styleClass="title"/>
+        
+        <Label text="Enter post title to delete:" layoutX="20" layoutY="60" />
+        <TextField fx:id="titleField" layoutX="20" layoutY="100" promptText="Enter post title" prefWidth="210.0"/>
+
+        <HBox spacing="10" alignment="CENTER" layoutX="20.0" layoutY="150.0">
+            <Button fx:id="deletePostButton" text="Delete" onAction="#deletePost" />
+            <Button fx:id="closeWindowButton" text="Close" onAction="#cancel" />
+        </HBox>
+
+        <Label text="Existing Posts:" styleClass="label-title" layoutX="400.0" layoutY="20.0" />
+        
+        <TableView fx:id="postsTableView" layoutX="400.0" layoutY="60.0" prefWidth="600.0" prefHeight="300.0">
+            <columns>
+                <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0" />
+                <TableColumn fx:id="authorColumn" text="Author" prefWidth="150.0" />
+                <TableColumn fx:id="contentColumn" text="Content" prefWidth="250.0" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

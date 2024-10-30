@@ -1,0 +1,57 @@
+.root {
+    -fx-font-size: 14px;
+    -fx-background-color: #18191a;
+}
+.button {
+    -fx-background-color: #242526;
+    -fx-text-fill: #DDDDDD;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 4px;
+    -fx-min-width: 100px; 
+
+}
+.button:hover {
+    -fx-background-color: #5c5c5e;
+}
+.button:pressed {
+    -fx-background-color: #5c5c5e;
+}
+.label {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #DDDDDD;
+}
+.hint{
+    -fx-font-size: 14px;
+    -fx-text-fill: #DDDDDD;
+}
+.label-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #DDDDDD;
+}
+
+.table-view {
+    -fx-background-color: #242526;
+    -fx-table-cell-border-color: #333;
+    -fx-padding: 5px;
+}
+
+.table-column .text {
+    -fx-fill: #DDDDDD;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell {
+    -fx-background-color: #242526;
+}
+
+.table-cell {
+    -fx-text-fill: #DDDDDD;
+    -fx-font-size: 14px;
+}
+
+.table-view .column-header {
+    -fx-background-color: #3A3B3C; 
+}

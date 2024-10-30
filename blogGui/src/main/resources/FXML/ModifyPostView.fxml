@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="blog.controller.ModifyPostController">
+
+    <Label text="Modify Post" styleClass="title" layoutX="20.0" layoutY="20.0" />
+
+    <Label text="Current Title:" layoutX="20.0" layoutY="60.0" />
+    <TextField fx:id="titleField" layoutX="150.0" layoutY="60.0" prefWidth="210.0" promptText="Enter current post title" />
+    
+    <Label text="New Title:" layoutX="20.0" layoutY="100.0" />
+    <TextField fx:id="newTitleTextField" layoutX="150.0" layoutY="100.0" prefWidth="210.0" promptText="Enter new title" />
+    
+    <Label text="New Content:" layoutX="20.0" layoutY="140.0" />
+    <TextArea fx:id="newContentTextArea" layoutX="150.0" layoutY="140.0" prefWidth="210.0" prefHeight="100.0" promptText="Enter new content" />
+
+    <HBox spacing="10" alignment="CENTER" layoutX="150.0" layoutY="260.0">
+        <Button fx:id = "modifyPostButton" text="Modify" onAction="#modifyPost" />
+        <Button fx:id = "closeWindowButton" text="Cancel" onAction="#cancel" />
+    </HBox>
+    
+    <Label text="Existing Posts:" styleClass="label-title" layoutX="400.0" layoutY="20.0" />
+    
+    <TableView fx:id="postsTableView" layoutX="400.0" layoutY="60.0" prefWidth="600.0" prefHeight="300.0">
+        <columns>
+            <TableColumn fx:id="titleColumn" text="Title" prefWidth="200.0" />
+            <TableColumn fx:id="authorColumn" text="Author" prefWidth="150.0" />
+            <TableColumn fx:id="contentColumn" text="Content" prefWidth="250.0" />
+        </columns>
+    </TableView>
+    
+</AnchorPane>
