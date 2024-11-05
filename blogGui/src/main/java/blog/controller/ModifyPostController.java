@@ -114,30 +114,25 @@ public class ModifyPostController {
             return;
         }
 
-        if (!newTitle.isEmpty() && !newContent.isEmpty()) {
-           
-            try{
-            repository.modifyTitle(currentTitle, newTitle);
-            repository.modifyContent(newTitle, newContent);
-            showAlert("Post updated successfully.");
-            } catch (PostNotFoundException e) {
-                showAlert(e.getMessage());}
-            
-        } else if (!newTitle.isEmpty()) {
-            try{
-            repository.modifyTitle(currentTitle, newTitle);
-            } catch (PostNotFoundException e) {
-                showAlert(e.getMessage());}
-            showAlert("Post's title updated successfully.");
-        } else if (!newContent.isEmpty()) {
-            try {
-            repository.modifyContent(newTitle, newContent);
-            } catch (PostNotFoundException e) {
-                showAlert(e.getMessage());}
-            showAlert("Post's content updated successfully.");
-        } else {
-            showAlert("No changes were made.");
+        try {
+            if (!newTitle.isEmpty()) {
+                repository.modifyPost(currentTitle, newTitle, PostRepository.ModificationType.TITLE);
+                showAlert("Post's title updated successfully.");
+                currentTitle = newTitle;
+            }
+
+            if (!newContent.isEmpty()) {
+                repository.modifyPost(currentTitle, newContent, PostRepository.ModificationType.CONTENT);
+                showAlert("Post's content updated successfully.");
+            }
+
+            if (newTitle.isEmpty() && newContent.isEmpty()) {
+                showAlert("No changes were made.");
+            }
+        } catch (PostNotFoundException e) {
+            showAlert(e.getMessage());
         }
+
         returnToMenu();
     }
 

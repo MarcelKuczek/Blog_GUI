@@ -88,14 +88,17 @@ public class PostRepository {
         throw new PostNotFoundException("Post '" + postTitleToDelete + "' not found.");
     }
     }
+
+    public enum ModificationType {
+        TITLE, CONTENT
+    }
     
     /**
      * Modifies the title of an post.
      * 
      * @param postTitleToModify The current title of the post to modify
-     * @param newTitle The new title to set for the post
      */
-    public void modifyTitle(String postTitleToModify, String newTitle) throws PostNotFoundException{
+    public void modifyPost(String postTitleToModify, String newValue, ModificationType type) throws PostNotFoundException {
         Post postToModify = null;
         for (Post post : posts) {
             if (post.getTitle().equalsIgnoreCase(postTitleToModify)) {
@@ -104,28 +107,11 @@ public class PostRepository {
             }
         }
         if (postToModify != null) {
-            postToModify.setTitle(newTitle);
-        } else {
-            throw new PostNotFoundException("Post '" + postTitleToModify + "' not found.");
-        }
-    }
-    
-    /**
-     * Modifies the content of an post.
-     * 
-     * @param postTitleToModify The current title of the post to modify
-     * @param newContent The new content to set for the post
-     */
-    public void modifyContent(String postTitleToModify, String newContent) throws PostNotFoundException{
-        Post postToModify = null;
-        for (Post post : posts) {
-            if (post.getTitle().equalsIgnoreCase(postTitleToModify)) {
-                postToModify = post;
-                break;
+            if (type == ModificationType.TITLE) {
+                postToModify.setTitle(newValue);
+            } else if (type == ModificationType.CONTENT) {
+                postToModify.setContent(newValue);
             }
-        }
-        if (postToModify != null) {
-            postToModify.setContent(newContent);
         } else {
             throw new PostNotFoundException("Post '" + postTitleToModify + "' not found.");
         }
