@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PostRepository {
 
-    private final List<Post> posts; // List to store blog posts
+    private final List<Post> posts;
 
     /**
      * Constructor for the PostRepository class. Initializes the repository with some default posts.
