@@ -7,6 +7,7 @@ package blog.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * The PostRepository class is responsible for managing a collection of blog posts.
@@ -36,13 +37,10 @@ public class PostRepository {
      * @return A list of posts written by the selected author
      */
     public List<Post> getPostsByAuthor(String author) {
-        List<Post> result = new ArrayList<>();
-        for (Post post : posts) {
-            if (post.getAuthor().equalsIgnoreCase(author)) {
-                result.add(post);
-            }
-        }
-        return result;
+
+        return posts.stream()
+                .filter(post -> post.getAuthor().equalsIgnoreCase(author))
+                .collect(Collectors.toList());
     }
     
     /**
@@ -52,12 +50,8 @@ public class PostRepository {
      * @return A list of posts
      */
     public List<Post> getallPosts() {
-        List<Post> result = new ArrayList<>();
-        for (Post post : posts) {
-                result.add(post);
-                
-        }
-        return result;
+        return posts.stream()
+                .collect(Collectors.toList());
     }
     
     /**
@@ -74,19 +68,13 @@ public class PostRepository {
      * 
      * @param postTitleToDelete The title of the post to delete
      */
-    public void deletePost(String postTitleToDelete)throws PostNotFoundException {
-        Post postToRemove = null;
-        for (Post post : posts) {
-            if (post.getTitle().equalsIgnoreCase(postTitleToDelete)) {
-                postToRemove = post;
-                break;
-            }
-        }
-        if (postToRemove != null) {
-            posts.remove(postToRemove);
-        } else {
-        throw new PostNotFoundException("Post '" + postTitleToDelete + "' not found.");
-    }
+    public void deletePost(String postTitleToDelete) throws PostNotFoundException {
+        Post postToRemove = posts.stream()
+            .filter(post -> post.getTitle().equalsIgnoreCase(postTitleToDelete)) 
+            .findFirst() 
+            .orElseThrow(() -> new PostNotFoundException("Post '" + postTitleToDelete + "' not found."));
+
+        posts.remove(postToRemove); 
     }
 
     public enum ModificationType {
